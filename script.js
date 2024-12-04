@@ -28,39 +28,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   
       header {
-        background-color: white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-      }
-  
-      header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-      }
-  
-      .logo {
-        display: flex;
-        align-items: center;
-        margin-right: auto;
-      }
-  
-      .logo img {
-        width: 60px;
-        height: 60px;
-      }
-  
-      .logo span {
-        margin-left: 10px;
-        font-weight: bold;
-        font-size: 1.2rem;
-        color: var(--olive-700);
-      }
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 40px;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: -20px;
+      left: -200px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 60px;  /* Increased size */
+      height: 60px; /* Increased size */
+      object-fit: contain;
+    }
+
+    .logo span {
+      margin-left: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--olive-700);
+    }
+
+    nav {
+      margin-left: auto;
+    }
+
   
       nav ul {
         display: flex;
@@ -342,6 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#upload">Upload</a></li>
+            <li><a href="#old-map">Old Map</a></li>
             <li><a href="#road-name">Road Name</a></li>
             <li><a href="#tracking">Tracking</a></li>
             <li><a href="#vehicle-features">Vehicle Features</a></li>
@@ -379,6 +390,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         </section>
+       <section id="old-map">
+          <div class="container">
+            <h2>Old Map</h2>
+            <div class="map-container full-width">
+              <div id="map1" class="map full-height"></div>
+            </div>
+          </div>
+        </section>
         <section id="road-name" class="road-name-section">
           <div class="container">
             <h2>Road Name</h2>
@@ -392,14 +411,13 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </section>
        <section id="tracking">
-        <div class="container">
-          <h2>Vehicle Tracking</h2>
-          <div class="map-container">
-            <div id="map1" class="map"></div>
-            <div id="map2" class="map"></div>
+          <div class="container">
+            <h2>Predicted Map</h2>
+            <div class="map-container full-width">
+              <div id="map2" class="map full-height"></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       
       <section id="vehicle-features" class="vehicle-features">
         <div class="container">
@@ -491,6 +509,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     // Maps
+
+    style.textContent += `
+    .map-container.full-width {
+      width: 100%;
+      height: 600px;
+    }
+
+    .map.full-height {
+      width: 100%;
+      height: 100%;
+    }
+    `;
+    document.head.appendChild(style);
+
     leafletScript.onload = () => {
       const map1 = L.map('map1').setView([51.505, -0.09], 13);
       const map2 = L.map('map2').setView([51.505, -0.09], 13);
