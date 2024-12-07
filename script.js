@@ -467,65 +467,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Road Name Section */
 .road-name-section {
-    background-color: var(--cyan-100);
-    padding: 40px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: var(--cyan-100);
+  padding: 80px 0; /* Adjust padding for spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full viewport height for floating effect */
 }
 
-/* Hover Effect for Road Name Box */
+/* Floating Box Style */
+.floating-box {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Create the floating shadow effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+  padding: 40px;
+  width: 80%; /* Adjust width for responsiveness */
+  max-width: 600px;
+}
+
+.floating-box:hover {
+  transform: translateY(-10px) scale(1.05); /* Lift the box and scale slightly */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Form styles */
 .road-name-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for each form */
 }
 
-/* Hover Effect on Road Name Form */
 .road-name-form:hover {
-    transform: translateY(-10px); /* Moves the form up on hover */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
+  transform: translateY(-10px); /* Move up on hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
 }
 
 /* Styling for Input Fields in Road Name Form */
 .road-name-form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* Centering Button */
 .button-center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* Big Button Styling */
 .big-button {
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    background-color: var(--cyan-600);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  background-color: var(--cyan-600);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 /* Hover Effect for Button */
 .big-button:hover {
-    background-color: var(--cyan-700);
+  background-color: var(--cyan-700);
 }
-
-   
+  
        .footer {
          background-color: var(--cyan-600);
          color: white;
@@ -732,19 +747,21 @@ document.addEventListener('DOMContentLoaded', () => {
            </div>
          </section>
 
-         <section id="road-name" class="road-name-section">
-           <div class="container">
-             <h2>Road Name</h2>
-             <form class="road-name-form">
-               <input type="text" id="highwayName" placeholder="Highway Name">
-               <input type="text" id="serviceRoadName" placeholder="Service Road Name">
-               <div class="button-center">
-                 <button type="submit" class="big-button">Submit Road Names</button>
-               </div>
-             </form>
-           </div>
-         </section>
-         
+        <section id="road-name" class="road-name-section">
+  <div class="floating-box">
+    <div class="container">
+      <h2>Road Name</h2>
+      <form class="road-name-form">
+        <input type="text" id="highwayName" placeholder="Highway Name">
+        <input type="text" id="serviceRoadName" placeholder="Service Road Name">
+        <div class="button-center">
+          <button type="submit" class="big-button">Submit Road Names</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
         <section id="tracking">
            <div class="container">
              <h2>Predicted Map</h2>
