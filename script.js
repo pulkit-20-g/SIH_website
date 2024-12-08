@@ -360,38 +360,82 @@ document.addEventListener('DOMContentLoaded', () => {
     height: 100%;
     border-radius: 8px;
 }
-       /* Floating container to make the toll section look like floating above the page */
+ /* Layout for toll content */
+.toll-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Styles for both floating containers */
 .floating-container {
     background-color: white;
-    padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Creates the floating shadow effect */
-    max-width: 500px;
-    margin: 0 auto; /* Centers the floating container */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    z-index: 1; /* Ensures it floats above other content */
+    padding: 40px;
 }
 
-/* Hover effect on the floating container */
 .floating-container:hover {
-    transform: translateY(-10px); /* Slightly lifts the box on hover */
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2); /* Enhance shadow for depth */
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
-/* Styling for the toll calculator box */
-.toll-calculator {
-    background-color: white;
-    padding: 20px;
+/* Toll section styles */
+#toll {
+    background-color: var(--cyan-100);
+    padding: 80px 0;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.toll-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Price list styles */
+.price-list {
+    position: absolute;
+    left: -400px;
+    top: -100;
+    max-width: 300px;
+}
+
+.price-list img {
+    width: 110%;
+    height: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect for the toll calculator */
-.toll-calculator:hover {
-    transform: translateY(-10px); /* Moves the box up on hover */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
+/* Floating box styles (only for toll calculator) */
+.floating-box {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 40px;
+}
+
+.floating-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Toll calculator styles */
+.toll-calculator {
+    flex: 0 0 auto;
+    width: 300px;
+    margin: 0 auto;
 }
 
 .toll-calculator div {
@@ -403,11 +447,13 @@ document.addEventListener('DOMContentLoaded', () => {
     margin-bottom: 5px;
 }
 
-.toll-calculator input {
+.toll-calculator input,
+.toll-calculator select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1rem;
 }
 
 /* Button styling */
@@ -434,6 +480,30 @@ document.addEventListener('DOMContentLoaded', () => {
     text-align: center;
 }
 
+/* Make tariffPerKm input look disabled */
+#tariffPerKm {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .price-list {
+        position: static;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+
+    .toll-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .toll-calculator {
+        width: 100%;
+        max-width: 400px;
+    }
+}
    
        /* Team Member Section */
 .team-grid {
@@ -465,82 +535,6 @@ document.addEventListener('DOMContentLoaded', () => {
     margin-bottom: 10px;
 }
 
-/* Road Name Section */
-.road-name-section {
-  background-color: var(--cyan-100);
-  padding: 80px 0; /* Adjust padding for spacing */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Ensure full viewport height for floating effect */
-}
-
-/* Floating Box Style */
-.floating-box {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Create the floating shadow effect */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
-  padding: 40px;
-  width: 80%; /* Adjust width for responsiveness */
-  max-width: 600px;
-}
-
-.floating-box:hover {
-  transform: translateY(-10px) scale(1.05); /* Lift the box and scale slightly */
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-}
-
-/* Form styles */
-.road-name-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for each form */
-}
-
-.road-name-form:hover {
-  transform: translateY(-10px); /* Move up on hover */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
-}
-
-/* Styling for Input Fields in Road Name Form */
-.road-name-form input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Centering Button */
-.button-center {
-  display: flex;
-  justify-content: center;
-}
-
-/* Big Button Styling */
-.big-button {
-  font-size: 1.2rem;
-  padding: 12px 24px;
-  background-color: var(--cyan-600);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Hover Effect for Button */
-.big-button:hover {
-  background-color: var(--cyan-700);
-}
-  
        .footer {
          background-color: var(--cyan-600);
          color: white;
@@ -701,8 +695,8 @@ document.addEventListener('DOMContentLoaded', () => {
              <li><a href="#home">Home</a></li>
              <li><a href="#upload">Upload</a></li>
              <li><a href="#old-map">Old Map</a></li>
-             <li><a href="#road-name">Road Name</a></li>
-             <li><a href="#tracking">Tracking</a></li>
+              <li><a href="#second-map">Snapped Map</a></li>
+             <li><a href="#tracking">Final Map</a></li>
              <li><a href="#vehicle-features">Vehicle Features</a></li>
              <li><a href="#toll">Toll</a></li>
              <li><a href="#team">Team</a></li>
@@ -746,21 +740,14 @@ document.addEventListener('DOMContentLoaded', () => {
              </div>
            </div>
          </section>
-
-        <section id="road-name" class="road-name-section">
-  <div class="floating-box">
-    <div class="container">
-      <h2>Road Name</h2>
-      <form class="road-name-form">
-        <input type="text" id="highwayName" placeholder="Highway Name">
-        <input type="text" id="serviceRoadName" placeholder="Service Road Name">
-        <div class="button-center">
-          <button type="submit" class="big-button">Submit Road Names</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
+         <section id="second-map">
+           <div class="container">
+             <h2>Snapped Map</h2>
+             <div class="map-container full-width">
+               <div id="map3" class="map full-height"></div>
+             </div>
+           </div>
+         </section>
 
         <section id="tracking">
            <div class="container">
@@ -777,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <h2>Vehicle Features</h2>
       <div class="features-grid">
         <div class="feature">
-          <h3>Speed</h3>
+          <h3>Avg Speed</h3>
           <p id="speed">0 km/h</p>
         </div>
         <div class="feature">
@@ -785,12 +772,16 @@ document.addEventListener('DOMContentLoaded', () => {
           <p id="bearing">0°</p>
         </div>
         <div class="feature">
-          <h3>Acceleration</h3>
+          <h3>Avg Acceleration</h3>
           <p id="acceleration">0 m/s²</p>
         </div>
         <div class="feature">
-          <h3>Total Distance</h3>
+          <h3>Distance on Highway</h3>
           <p id="totalDistance">0 km</p>
+        </div>
+         <div class="feature">
+          <h3>Distance on Service</h3>
+          <p id="totalService">0 km</p>
         </div>
         <div class="feature">
           <h3>Total Time</h3>
@@ -801,22 +792,32 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-
-
-        <section id="toll">
+<section id="toll">
     <div class="container">
         <h2>Toll Calculation</h2>
         
-        <!-- Floating Container that wraps the toll calculator -->
-        <div class="floating-container">
-            <div class="toll-calculator">
+        <div class="toll-content">
+            <!-- Price list image on the left -->
+            <div class="price-list">
+                <img src="/Users/pulkitgarg/Desktop/SIH/Final/WEB_JS/list.png?height=500&width=400" alt="Toll Price List" id="tollPriceList">
+            </div>
+
+            <!-- Floating Container that wraps the toll calculator -->
+            <div class="floating-box toll-calculator">
                 <div>
-                    <label for="vehicleNumber">Vehicle Number</label>
-                    <input type="text" id="vehicleNumber">
+                    <label for="vehicleType">Vehicle Type</label>
+                    <select id="vehicleType">
+                        <option value="0.65">Light Motor Vehicle</option>
+                        <option value="1.05">Light Commercial Vehicle</option>
+                        <option value="2.20">Bus or Truck (Two axles)</option>
+                        <option value="2.40">Three-axle commercial vehicles</option>
+                        <option value="3.45">Heavy Construction Machinery(HCM) or Earth Moving Equipment (EME) or Multi Axle Vehicle (MAV)</option>
+                        <option value="4.20">Oversized Vehicles (seven or more axles)</option>
+                    </select>
                 </div>
                 <div>
                     <label for="tariffPerKm">Tariff per km</label>
-                    <input type="number" id="tariffPerKm">
+                    <input type="number" id="tariffPerKm" readonly>
                 </div>
                 <div class="button-center">
                     <button id="calculateToll" class="big-button">Calculate Toll</button>
@@ -826,6 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </div>
 </section>
+
 
          <section id="team">
            <div class="container">
@@ -877,6 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
      leafletScript.onload = () => {
        const map1 = L.map('map1').setView([51.505, -0.09], 13);
        const map2 = L.map('map2').setView([51.505, -0.09], 13);
+       const map3 = L.map('map3').setView([51.505, -0.09], 13);
    
        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -885,55 +888,105 @@ document.addEventListener('DOMContentLoaded', () => {
        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
        }).addTo(map2);
+
+       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map3);
      };
-   // Function to update vehicle features (placeholder)
-   function updateVehicleFeatures(data) {
-     document.getElementById('speed').textContent = `${data.speed.toFixed(2)} km/h`;
-     document.getElementById('bearing').textContent = `${data.bearing.toFixed(2)}°`;
-     document.getElementById('acceleration').textContent = `${data.acceleration.toFixed(2)} m/s²`;
-     document.getElementById('totalDistance').textContent = `${data.totalDistance.toFixed(2)} km`;
-     document.getElementById('totalTime').textContent = `${data.totalTime.toFixed(2)} hrs`;
-   }
- 
-   // Simulating data updates (replace this with actual data fetching)
-   setInterval(() => {
-     const mockData = {
-       speed: Math.random() * 100,
-       bearing: Math.random() * 360,
-       acceleration: Math.random() * 5,
-       totalDistance: Math.random() * 1000,
-       totalTime: Math.random() * 24
-     };
-     updateVehicleFeatures(mockData);
-   }, 5000);
- 
- 
-     // Toll Calculator
-     const vehicleNumberInput = document.getElementById('vehicleNumber');
-     const tariffPerKmInput = document.getElementById('tariffPerKm');
-     const calculateTollButton = document.getElementById('calculateToll');
-     const totalTollDisplay = document.getElementById('totalToll');
-   
-     calculateTollButton.addEventListener('click', () => {
-       const vehicleNumber = vehicleNumberInput.value;
-       const tariffPerKm = parseFloat(tariffPerKmInput.value);
-   
-       if (vehicleNumber && !isNaN(tariffPerKm)) {
-         const totalToll = tariffPerKm * 100; // Assuming 100 km distance
-         totalTollDisplay.textContent = `Total Toll: $${totalToll.toFixed(2)}`;
-       } else {
-         totalTollDisplay.textContent = 'Please enter valid values';
-       }
-     });
+// Toll Calculator
+const tollSection = document.getElementById('toll');
+const container = tollSection.querySelector('.container');
+
+// Create floating box
+const floatingBox = document.createElement('div');
+floatingBox.className = 'floating-box';
+floatingBox.style.cssText = `
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+`;
+
+// Move existing content into floating box
+floatingBox.innerHTML = container.innerHTML;
+container.innerHTML = '';
+container.appendChild(floatingBox);
+
+// Re-select elements within the new structure
+const vehicleTypeSelect = floatingBox.querySelector('#vehicleType');
+const tariffPerKmInput = floatingBox.querySelector('#tariffPerKm');
+const calculateTollButton = floatingBox.querySelector('#calculateToll');
+const totalTollDisplay = floatingBox.querySelector('#totalToll');
+const totalDistanceElement = document.getElementById('totalDistance');
+
+// Add hover effect
+floatingBox.addEventListener('mouseenter', () => {
+    floatingBox.style.transform = 'translateY(-10px)';
+    floatingBox.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.3)';
+});
+
+floatingBox.addEventListener('mouseleave', () => {
+    floatingBox.style.transform = 'translateY(0)';
+    floatingBox.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+});
+
+// Update tariff when vehicle type changes
+vehicleTypeSelect.addEventListener('change', () => {
+    tariffPerKmInput.value = vehicleTypeSelect.value;
+});
+
+// Set initial tariff value
+tariffPerKmInput.value = vehicleTypeSelect.value;
+
+calculateTollButton.addEventListener('click', () => {
+    const tariffPerKm = parseFloat(tariffPerKmInput.value);
+    const totalDistance = parseFloat(totalDistanceElement.textContent);
+
+    if (!isNaN(tariffPerKm) && !isNaN(totalDistance)) {
+        const totalToll = tariffPerKm * totalDistance;
+        totalTollDisplay.textContent = `Total Toll: ₹${totalToll.toFixed(2)}`;
+    } else {
+        totalTollDisplay.textContent = 'Unable to calculate toll. Please check the values.';
+    }
+});
+
+// Function to update vehicle features (placeholder)
+function updateVehicleFeatures(data) {
+    document.getElementById('speed').textContent = `${data.speed.toFixed(2)} km/h`;
+    document.getElementById('bearing').textContent = `${data.bearing.toFixed(2)}°`;
+    document.getElementById('acceleration').textContent = `${data.acceleration.toFixed(2)} m/s²`;
+    document.getElementById('totalDistance').textContent = `${data.totalDistance.toFixed(2)} km`;
+    document.getElementById('totalService').textContent = `${data.totalService.toFixed(2)} km`;
+    document.getElementById('totalTime').textContent = `${data.totalTime.toFixed(2)} hrs`;
+}
+
+// Simulating data updates (replace this with actual data fetching)
+setInterval(() => {
+    const mockData = {
+        speed: Math.random() * 100,
+        bearing: Math.random() * 360,
+        acceleration: Math.random() * 5,
+        totalDistance: Math.random() * 1000,
+        totalService: Math.random() * 1000,
+        totalTime: Math.random() * 24
+    };
+    updateVehicleFeatures(mockData);
+}, 5000);
    
      // Team Section
      const teamMembers = [
-       { name: 'John Doe', image: 'https://via.placeholder.com/150' },
-       { name: 'Jane Smith', image: 'https://via.placeholder.com/150' },
-       { name: 'Mike Johnson', image: 'https://via.placeholder.com/150' },
-       { name: 'Emily Brown', image: 'https://via.placeholder.com/150' },
-       { name: 'Chris Lee', image: 'https://via.placeholder.com/150' },
-       { name: 'Sarah Davis', image: 'https://via.placeholder.com/150' },
+       { name: 'Pranjal Soni', image: 'https://via.placeholder.com/150' },
+       { name: 'Pulkit Garg', image: 'https://via.placeholder.com/150' },
+       { name: 'Kahaan Soni', image: 'https://via.placeholder.com/150' },
+       { name: 'Akash Iyer', image: 'https://via.placeholder.com/150' },
+       { name: 'Utkarsh Sharma', image: 'https://via.placeholder.com/150' },
+       { name: 'Siddharth Sivapuram', image: 'https://via.placeholder.com/150' },
      ];
    
      const teamGrid = document.querySelector('.team-grid');
@@ -956,17 +1009,6 @@ document.addEventListener('DOMContentLoaded', () => {
            behavior: 'smooth'
          });
        });
-     });
-   
-     // Add Road Name form submission
-     const roadNameForm = document.querySelector('.road-name-form');
-     roadNameForm.addEventListener('submit', (e) => {
-       e.preventDefault();
-       const highwayName = document.getElementById('highwayName').value;
-       const serviceRoadName = document.getElementById('serviceRoadName').value;
-       console.log('Highway Name:', highwayName);
-       console.log('Service Road Name:', serviceRoadName);
-       // Add your code here to handle the road names
      });
    
      // Hero image slideshow
